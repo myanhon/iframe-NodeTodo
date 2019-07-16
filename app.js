@@ -3,6 +3,7 @@ const app = express();
 const mongoose = require('mongoose');
 const config = require('./config');
 const setupController = require('./controllers/setupController');
+const apiController = require('./controllers/apiController');
 
 const port = process.env.PORT || 3000;
 
@@ -12,5 +13,6 @@ app.set('viewengine', 'ejs');
 
 mongoose.connect(config.getDbConnectionString(),{ useNewUrlParser: true }); //Mongoose doesn't close connection
 setupController(app);
+apiController(app);
 app.listen(port);
 
