@@ -7,12 +7,14 @@ const apiController = require('./controllers/apiController');
 
 const port = process.env.PORT || 3000;
 
-app.use('/assets', express.static(__dirname + 'publi'));
+app.use('/assets', express.static(__dirname + 'public'));
 
 app.set('viewengine', 'ejs');
 
 mongoose.connect(config.getDbConnectionString(),{ useNewUrlParser: true }); //Mongoose doesn't close connection
+
 setupController(app);
 apiController(app);
+
 app.listen(port);
 
